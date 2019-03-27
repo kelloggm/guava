@@ -21,6 +21,7 @@
     <truth.version>0.42</truth.version>
     <animal.sniffer.version>1.17</animal.sniffer.version>
     <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
+    <annotatedJdk>/homes/gws/kelloggm/checker-framework/checker/dist/jdk8.jar</annotatedJdk>
   </properties>
   <issueManagement>
     <system>GitHub Issues</system>
@@ -106,6 +107,10 @@
 	      <Xmaxwarns>10000</Xmaxwarns>
 	      <Astubs>${project.basedir}/stubs/</Astubs>
 	    </compilerArguments>
+            <compilerArgs>
+              <!-- location of the annotated JDK, which comes from a Maven dependency -->
+              <arg>-Xbootclasspath/p:${annotatedJdk}</arg>
+            </compilerArgs>
 	    <annotationProcessorPaths>
 	      <path>
 		<groupId>org.checkerframework</groupId>
@@ -210,6 +215,13 @@
         <plugin>
           <artifactId>maven-dependency-plugin</artifactId>
           <version>2.10</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>properties</goal>
+              </goals>
+            </execution>
+          </executions>
         </plugin>
         <plugin>
           <artifactId>maven-antrun-plugin</artifactId>
@@ -250,6 +262,12 @@
   </distributionManagement>
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.checkerframework</groupId>
+        <artifactId>jdk8</artifactId>
+        <version>2.7.0</version>
+        <scope>compile</scope>
+      </dependency>
       <dependency>
         <groupId>com.google.code.findbugs</groupId>
         <artifactId>jsr305</artifactId>
