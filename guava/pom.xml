@@ -16,11 +16,11 @@
     much more.
   </description>
   <dependencies>
-    <dependency>
+    <!--dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-crypto-compliance-checker</artifactId>
       <version>1.0</version>
-    </dependency>
+    </dependency-->
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>failureaccess</artifactId>

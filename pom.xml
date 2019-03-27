@@ -112,7 +112,7 @@
 		<artifactId>checker</artifactId>
 		<version>0.0.0</version>
 	      </path>
-	      <path>
+	      <!--path>
 		<groupId>com.amazonaws</groupId>
 		<artifactId>kms-compliance-checker</artifactId>
 		<version>1.0</version>
@@ -121,7 +121,7 @@
 		<groupId>com.amazonaws</groupId>
 		<artifactId>aws-crypto-compliance-checker</artifactId>
 		<version>1.0</version>
-	      </path>
+	      </path-->
 	      <path>
 		<groupId>org.checkerframework</groupId>
 		<artifactId>checker-qual</artifactId>
