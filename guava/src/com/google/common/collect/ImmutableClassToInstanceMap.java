@@ -106,6 +106,7 @@ public final class ImmutableClassToInstanceMap<B> extends ForwardingMap<Class<? 
      * @throws NullPointerException if any key or value in {@code map} is null
      * @throws ClassCastException if any value is not an instance of the type specified by its key
      */
+    @SuppressWarnings({"value","compliance","crypto"}) // FALSE POSITIVE: CF 2.7.0 issues spurious generic error here.
     @CanIgnoreReturnValue
     public <T extends B> Builder<B> putAll(Map<? extends Class<? extends T>, ? extends T> map) {
       for (Entry<? extends Class<? extends T>, ? extends T> entry : map.entrySet()) {

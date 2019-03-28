@@ -569,6 +569,7 @@ public abstract class ImmutableList<E> extends ImmutableCollection<E>
   }
 
   @Override
+  @SuppressWarnings({"value", "compliance", "crypto"}) // FALSE POSITIVE: spurious error issued by CF 2.7.0 on methodref to get
   public Spliterator<E> spliterator() {
     return CollectSpliterators.indexed(size(), SPLITERATOR_CHARACTERISTICS, this::get);
   }

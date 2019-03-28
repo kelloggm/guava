@@ -41,7 +41,7 @@ import java.util.Spliterator;
  * @since 2.0
  */
 @GwtIncompatible
-@SuppressWarnings("serial") // using writeReplace instead of standard serialization
+@SuppressWarnings({"serial", "value", "compliance", "crypto"}) // using writeReplace instead of standard serialization // FALSE POSITIVE: generic errors issued on this code that I can't explain
 public final class MutableClassToInstanceMap<B> extends ForwardingMap<Class<? extends B>, B>
     implements ClassToInstanceMap<B>, Serializable {
 

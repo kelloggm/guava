@@ -315,7 +315,7 @@ public final class Queues {
   @Beta
   @CanIgnoreReturnValue
   @GwtIncompatible // BlockingQueue
-  @SuppressWarnings("GoodTime") // should accept a java.time.Duration
+  @SuppressWarnings({"GoodTime", "value", "compliance", "crypto"}) // should accept a java.time.Duration // FALSE POSITIVE: CF 2.7.0 issues unexplained generic error
   public static <E> int drainUninterruptibly(
       BlockingQueue<E> q,
       Collection<? super E> buffer,
