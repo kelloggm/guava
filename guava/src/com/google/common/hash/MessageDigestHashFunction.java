@@ -25,6 +25,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
+import org.checkerframework.common.value.qual.StringVal;
+
 /**
  * {@link HashFunction} adapter for {@link MessageDigest} instances.
  *
@@ -41,14 +43,14 @@ final class MessageDigestHashFunction extends AbstractHashFunction implements Se
   private final boolean supportsClone;
   private final String toString;
 
-  MessageDigestHashFunction(String algorithmName, String toString) {
+    MessageDigestHashFunction(@StringVal({"MD5", "SHA-1", "SHA-256", "SHA-384", "SHA-512"}) String algorithmName, String toString) {
     this.prototype = getMessageDigest(algorithmName);
     this.bytes = prototype.getDigestLength();
     this.toString = checkNotNull(toString);
     this.supportsClone = supportsClone(prototype);
   }
 
-  MessageDigestHashFunction(String algorithmName, int bytes, String toString) {
+  MessageDigestHashFunction(@StringVal({"MD5", "SHA-1", "SHA-256", "SHA-384", "SHA-512"}) String algorithmName, int bytes, String toString) {
     this.toString = checkNotNull(toString);
     this.prototype = getMessageDigest(algorithmName);
     int maxLength = prototype.getDigestLength();
@@ -77,7 +79,7 @@ final class MessageDigestHashFunction extends AbstractHashFunction implements Se
     return toString;
   }
 
-  private static MessageDigest getMessageDigest(String algorithmName) {
+  private static MessageDigest getMessageDigest(@StringVal({"MD5", "SHA-1", "SHA-256", "SHA-384", "SHA-512"}) String algorithmName) {
     try {
       return MessageDigest.getInstance(algorithmName);
     } catch (NoSuchAlgorithmException e) {
@@ -86,6 +88,7 @@ final class MessageDigestHashFunction extends AbstractHashFunction implements Se
   }
 
   @Override
+    @SuppressWarnings({"value", "crypto", "compliance"}) // FALSE POSITIVE: prototype can only be created by this class, so it can only hold the algorithms the class names
   public Hasher newHasher() {
     if (supportsClone) {
       try {
@@ -98,11 +101,11 @@ final class MessageDigestHashFunction extends AbstractHashFunction implements Se
   }
 
   private static final class SerializedForm implements Serializable {
-    private final String algorithmName;
+    private final @StringVal({"MD5", "SHA-1", "SHA-256", "SHA-384", "SHA-512"}) String algorithmName;
     private final int bytes;
     private final String toString;
 
-    private SerializedForm(String algorithmName, int bytes, String toString) {
+    private SerializedForm(@StringVal({"MD5", "SHA-1", "SHA-256", "SHA-384", "SHA-512"}) String algorithmName, int bytes, String toString) {
       this.algorithmName = algorithmName;
       this.bytes = bytes;
       this.toString = toString;
@@ -115,6 +118,7 @@ final class MessageDigestHashFunction extends AbstractHashFunction implements Se
     private static final long serialVersionUID = 0;
   }
 
+    @SuppressWarnings({"value", "crypto", "compliance"}) // FALSE POSITIVE: prototype can only be created by this class, so it can only hold the algorithms the class names
   Object writeReplace() {
     return new SerializedForm(prototype.getAlgorithm(), bytes, toString);
   }

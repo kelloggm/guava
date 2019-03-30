@@ -24,6 +24,8 @@ import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import javax.crypto.Mac;
 
+import org.checkerframework.common.value.qual.StringVal;
+
 /**
  * {@link HashFunction} adapter for {@link Mac} instances.
  *
@@ -42,7 +44,7 @@ final class MacHashFunction extends AbstractHashFunction {
   private final int bits;
   private final boolean supportsClone;
 
-  MacHashFunction(String algorithmName, Key key, String toString) {
+  MacHashFunction(@StringVal({"HmacMD5", "HmacSHA1", "HmacSHA256", "HmacSHA512"}) String algorithmName, Key key, String toString) {
     this.prototype = getMac(algorithmName, key);
     this.key = checkNotNull(key);
     this.toString = checkNotNull(toString);
@@ -64,7 +66,7 @@ final class MacHashFunction extends AbstractHashFunction {
     }
   }
 
-  private static Mac getMac(String algorithmName, Key key) {
+    private static Mac getMac(@StringVal({"HmacMD5", "HmacSHA1", "HmacSHA256", "HmacSHA512"}) String algorithmName, Key key) {
     try {
       Mac mac = Mac.getInstance(algorithmName);
       mac.init(key);
@@ -77,6 +79,7 @@ final class MacHashFunction extends AbstractHashFunction {
   }
 
   @Override
+    @SuppressWarnings({"value", "crypto", "compliance"}) // FALSE POSITIVE: prototype can only be created by this class, so it can only hold the algorithms the class names
   public Hasher newHasher() {
     if (supportsClone) {
       try {
