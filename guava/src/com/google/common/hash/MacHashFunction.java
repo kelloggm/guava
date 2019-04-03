@@ -66,6 +66,7 @@ final class MacHashFunction extends AbstractHashFunction {
     }
   }
 
+    @SuppressWarnings({"compliance","crypto","value"}) // TRUE POSITIVE: HmacMD5 is too weak
     private static Mac getMac(@StringVal({"HmacMD5", "HmacSHA1", "HmacSHA256", "HmacSHA512"}) String algorithmName, Key key) {
     try {
       Mac mac = Mac.getInstance(algorithmName);
