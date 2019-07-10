@@ -69,7 +69,6 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * @since 2.0
  */
 @GwtCompatible(emulated = true)
-
 public final class Multimaps {
   private Multimaps() {}
 

@@ -105,7 +105,7 @@
             <compilerArguments>
 	      <Xmaxerrs>10000</Xmaxerrs>
 	      <Xmaxwarns>10000</Xmaxwarns>
-	      <Astubs>${project.basedir}\stubs\</Astubs>
+	      <Astubs>${project.basedir}/stubs/</Astubs>
               <AskipDefs>\.testing\.|Test</AskipDefs>
 	    </compilerArguments>
             <compilerArgs>

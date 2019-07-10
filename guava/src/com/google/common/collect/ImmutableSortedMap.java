@@ -617,7 +617,6 @@ public final class ImmutableSortedMap<K, V> extends ImmutableSortedMapFauxveride
       }
 
       @Override
-
       public void forEach(Consumer<? super Entry<K, V>> action) {
         asList().forEach(action);
       }

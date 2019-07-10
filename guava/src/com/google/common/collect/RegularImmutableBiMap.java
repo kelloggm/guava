@@ -255,7 +255,6 @@ class RegularImmutableBiMap<K, V> extends ImmutableBiMap<K, V> {
       }
 
       @Override
-
       public void forEach(Consumer<? super Entry<V, K>> action) {
         asList().forEach(action);
       }
