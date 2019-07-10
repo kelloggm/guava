@@ -452,6 +452,7 @@ class StandardTable<R, C, V> extends AbstractTable<R, C, V> implements Serializa
 
     /** Removes all {@code Column} mappings whose row key and value satisfy the given predicate. */
     @CanIgnoreReturnValue
+
     boolean removeFromColumnIf(Predicate<? super Entry<R, V>> predicate) {
       boolean changed = false;
       Iterator<Entry<R, Map<C, V>>> iterator = backingMap.entrySet().iterator();

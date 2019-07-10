@@ -379,6 +379,7 @@ public abstract class CharSource {
    * @since 22.0
    */
   @Beta
+
   public void forEachLine(Consumer<? super String> action) throws IOException {
     try (Stream<String> lines = lines()) {
       // The lines should be ordered regardless in most cases, but use forEachOrdered to be sure

@@ -105,7 +105,7 @@
             <compilerArguments>
 	      <Xmaxerrs>10000</Xmaxerrs>
 	      <Xmaxwarns>10000</Xmaxwarns>
-	      <Astubs>${project.basedir}/stubs/</Astubs>
+	      <Astubs>${project.basedir}\stubs\</Astubs>
               <AskipDefs>\.testing\.|Test</AskipDefs>
 	    </compilerArguments>
             <compilerArgs>
@@ -116,29 +116,36 @@
 	      <path>
 		<groupId>org.checkerframework</groupId>
 		<artifactId>checker</artifactId>
-		<version>0.0.0</version>
+		<version>2.9.0</version>
 	      </path>
+          <path>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>HTTPSChecker</artifactId>
+            <version>0.1-snapshot</version>
+          </path>
+          <!--
 	      <path>
-		<groupId>com.amazonaws</groupId>
+		<groupId>software.amazon.checkerframework</groupId>
 		<artifactId>kms-compliance-checker</artifactId>
 		<version>1.0</version>
 	      </path>
 	      <path>
-		<groupId>com.amazonaws</groupId>
+		<groupId>software.amazon.checkerframework</groupId>
 		<artifactId>aws-crypto-compliance-checker</artifactId>
 		<version>1.0</version>
-	      </path>
+	      </path>-->
 	      <path>
 		<groupId>org.checkerframework</groupId>
 		<artifactId>checker-qual</artifactId>
-		<version>2.7.0</version>
+		<version>2.9.0</version>
 	      </path>
 	    </annotationProcessorPaths>
-	    <annotationProcessors>
-	      <!-- Add all the checkers you want to enable here -->
+            <annotationProcessors>
+	       Add all the checkers you want to enable here
 	      <annotationProcessor>
-                com.amazon.checkerframework.compliance.kms.ComplianceChecker,com.amazon.checkerframework.cryptopolicy.CryptoPolicyComplianceChecker
-                <!--org.checkerframework.common.value.ValueChecker-->
+            org.checkerframework.checker.https.HTTPSChecker
+             <!--com.amazon.checkerframework.compliance.kms.ComplianceChecker,com.amazon.checkerframework.cryptopolicy.CryptoPolicyComplianceChecker
+            org.checkerframework.common.value.ValueChecker-->
               </annotationProcessor>
 	    </annotationProcessors>
           </configuration>
@@ -266,14 +273,20 @@
       <dependency>
         <groupId>org.checkerframework</groupId>
         <artifactId>jdk8</artifactId>
-        <version>2.7.0</version>
+        <version>2.9.0</version>
         <scope>compile</scope>
       </dependency>
       <dependency>
-	<groupId>com.amazonaws</groupId>
+        <groupId>org.checkerframework</groupId>
+        <artifactId>HTTPSChecker</artifactId>
+        <version>0.1-snapshot</version>
+      </dependency>
+      <!--
+      <dependency>
+	<groupId>software.amazon.checkerframework</groupId>
 	<artifactId>aws-crypto-compliance-checker</artifactId>
 	<version>1.0</version>
-      </dependency>
+      </dependency>-->
       <dependency>
         <groupId>com.google.code.findbugs</groupId>
         <artifactId>jsr305</artifactId>
@@ -282,7 +295,7 @@
       <dependency>
         <groupId>org.checkerframework</groupId>
         <artifactId>checker-qual</artifactId>
-        <version>2.5.2</version>
+        <version>2.9.0</version>
       </dependency>
       <dependency>
         <groupId>com.google.errorprone</groupId>
