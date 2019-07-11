@@ -17,10 +17,15 @@
   </description>
   <dependencies>
     <dependency>
-      <groupId>com.amazonaws</groupId>
+      <groupId>org.checkerframework</groupId>
+      <artifactId>HTTPSChecker</artifactId>
+      <version>0.1-snapshot</version>
+    </dependency>
+    <!--<dependency>
+      <groupId>software.amazon.checkerframework</groupId>
       <artifactId>aws-crypto-compliance-checker</artifactId>
       <version>1.0</version>
-    </dependency>
+    </dependency>-->
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>failureaccess</artifactId>
@@ -38,6 +43,7 @@
     <dependency>
       <groupId>org.checkerframework</groupId>
       <artifactId>checker-qual</artifactId>
+      <version>2.9.0</version>
     </dependency>
     <dependency>
       <groupId>com.google.errorprone</groupId>
