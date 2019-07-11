@@ -141,7 +141,7 @@
 	      </path>
 	    </annotationProcessorPaths>
             <annotationProcessors>
-	       Add all the checkers you want to enable here
+              <!-- Add all the checkers you want to enable here -->
 	      <annotationProcessor>
             org.checkerframework.checker.https.HTTPSChecker
              <!--com.amazon.checkerframework.compliance.kms.ComplianceChecker,com.amazon.checkerframework.cryptopolicy.CryptoPolicyComplianceChecker
